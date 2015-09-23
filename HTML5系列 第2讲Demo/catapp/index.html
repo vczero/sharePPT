@@ -1,0 +1,360 @@
+
+<!DOCTYPE >
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CAT V0.1</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="css/Jingle.css"/>
+	<link rel="stylesheet" href="css/main.css" />
+	
+	
+	<style>
+	.header-secondary .active{
+		border-bottom:4px solid #0093d5;
+	}
+	#aside_container span.icon {
+	  position: inherit;
+	  font-size: 40px;
+	  color: #524d4b;
+	  padding: 0 10px;
+	}
+	#aside_container a {
+	  -webkit-box-flex: 1;
+	}
+	#aside_container li {
+	  display: -webkit-box;
+	}
+	#aside_container i {
+	  color:black;
+	}
+	#aside_container .tag{
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		left: 21px;
+		top: 13px;
+		border-radius: 8px;
+		z-index: 999;
+		text-align: center;
+	}
+	#aside_container li strong {
+	
+	  padding-left: 5px;
+	}
+	#aside_container .header {
+		height:43px;
+	}
+	.indented > * {
+		margin: 5px 10px;
+	}
+	 #module_article span.icon {
+		position: inherit;
+		font-size: 16px;
+		color: #524d4b;
+		padding: 0 10px;
+	}
+	.control-group li > a{
+		color:#A3A3A3;
+	}
+	</style>
+</head>
+<body>
+
+<div id="aside_container"><!---侧边栏容器--->
+	<aside id="left_push_aside" data-position="left" data-transition="push">
+		<div class="header">已选模块</div>
+		<div class="center">
+			<ul class="list" id="module_list">
+				<li data-icon="next" data-selected="selected" class="" data-href="App_section" id="module_App_section">
+					<i class="icon next"></i>
+                 
+					<div class="tag alizarin">1</div>
+                    <a >
+						<i class="icon newspaper"></i>
+                        <strong>App访问趋势</strong> 
+                    </a>
+                </li>
+				<!--li  data-selected="selected" class="" data-href="Event_section"  id="module_Event_section">
+					<i class="icon"></i>
+					<div class="tag alizarin">2</div>
+                    <a>
+						<i class="icon bubble"></i>
+                        <strong>业务大盘</strong>
+                    </a>
+                </li-->
+				<li  data-selected="selected" class="" data-href="Problem_section"  id="module_Problem_section">
+					<i class="icon"></i>
+					<div class="tag alizarin">8</div>
+                    <a >
+						<i class="icon bell"></i>
+                        <strong>报错大盘</strong>
+                    </a>
+                </li>
+			</ul>
+			<ul class="list" style="padding-top:20px;">
+				<li data-icon="plus" data-selected="selected" class="">
+					<i class="icon plus" id="module_add"></i>
+                    <a href="#add_module" data-target="section">
+						
+                        <strong>添加模块</strong>
+                    </a>
+                </li>
+			</ul>
+		</div>
+	</aside>
+</div>
+
+
+
+<div id="section_container"><!--页面容器--->
+	<section id="App_section" class=""  data-transition="slideUp" style="display: none;">
+		<header>
+			<nav class="left">
+				<div class="alizarin" style=" width: 12px;height: 12px;position: absolute; right: 0px;top: 5px;border-radius: 6px;"></div>
+				<a href="#left_push_aside" data-target="menu" data-icon="list"><i class="icon list"></i></a>
+			</nav>
+			<nav class="right">
+				<a href="#form_section" data-target="section"  data-icon="search"><i class="icon search"></i></a>
+			</nav>
+			<h1 class="title">App访问趋势</h1>
+		</header>
+		<!--nav class="header-secondary" style="overflow: hidden;">
+			<div style="width: 640px; transition-property: transform; -webkit-transition-property: transform; transition-duration: 0ms; -webkit-transition-duration: 0ms; transform-origin: 0px 0px 0px; transform: translate(-28px, 0px) scale(1) translateZ(0px);" class="grid">
+				<a href="javascript:void(0);" class="one-part active" style="display: block;">App</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Event</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Problem</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Heartbeat</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Cross</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Cache</a>
+			</div>
+			<i id="btn_add_module" class="icon plus" style="position: absolute;right:0;top:0;opacity:.9;z-index:9999;background-color:#282c32;  margin: 0px;  width: 21px;"></i>
+		</nav-->
+		<article id="App_article" class="active">    
+	        <ul class="control-group" id="changeDragChartType" style="margin:10px 30px;">
+	            <li class="active" data-type="request">请求数</li>
+	            <li data-type="success">成功率</li>
+	            <li data-type="delay">成功延时</li>
+	        </ul>
+	        <div class="chartTitle" id="chartTitle_sp">请求数（个/每分钟）</div>
+	        <canvas id="chart_drag_line_canvas"></canvas>
+	        <canvas id="chart_drag_bar_canvas" style="display: none;"></canvas>
+	        <canvas id="chart_drag_delay_canvas" style="display: none;"></canvas>
+	        <div class="legend">
+	            <div data-icon="stop" style="color: #368CE9;">当前值</div>
+	            <div data-icon="stop" style="color: #FFBB00;">对比值</div>
+	        </div>
+	        
+	        <h1 class="chartTitle" style="text-align:left;font-size:0.85em;">当前值</h1>
+	        <div class="item_list">
+	        		<div class="item_listl_left">
+	        			<span>成功率:</span> <span id="success_value_c" class="item_list_high">95.799%</span>
+	        		</div>
+	        		<div class="item_list_right">
+	        			<span>总请求数:</span> <span id="success_request_c"  class="item_list_green">85,773</span>
+	        		</div>
+	        </div>
+	        
+	        <div class="item_list">
+	        		<div class="item_listl_left">
+	        			<span>总请求数(%):</span> <span id="success_requestA_c"  class="item_list_high">100.000%</span>
+	        		</div>
+	        		<div class="item_list_right">
+	        			<span>成功平均延迟(ms):</span> <span id="success_delay_c"  class="item_list_green">13,240</span>
+	        		</div>
+	        </div>
+	        
+	        <h1 class="chartTitle"  style="text-align:left;font-size:0.85em;">对比值</h1>
+	        <div class="item_list">
+	        		<div class="item_listl_left">
+	        			<span>成功率:</span> <span class="item_list_high" id="success_value_vs">95.799%</span>
+	        		</div>
+	        		<div class="item_list_right">
+	        			<span>总请求数:</span> <span id="success_request_vs" class="item_list_green">85,773</span>
+	        		</div>
+	        </div>        
+	        <div class="item_list">
+	        		<div class="item_listl_left">
+	        			<span>总请求数(%):</span> <span id="success_requestA_vs" class="item_list_high">100.000%</span>
+	        		</div>
+	        		<div class="item_list_right">
+	        			<span>成功平均延迟(ms):</span> <span id="success_delay_vs" class="item_list_green">13,240</span>
+	        		</div>
+	        </div>
+		</article>
+	</section>
+	
+	<section id="Problem_section" class=""  data-transition="slideUp">
+		<header>
+			<nav class="left">
+				<div class="alizarin" style=" width: 12px;height: 12px;position: absolute; right: 0px;top: 5px;border-radius: 6px;"></div>
+				<a href="#left_push_aside" data-target="menu" data-icon="list"><i class="icon list"></i></a>
+			</nav>
+			<nav class="right">
+				<a href="#Problem_search_section" data-target="section"  data-icon="search"><i class="icon search"></i></a>
+			</nav>
+			<h1 class="title">报错大盘</h1>
+		</header>
+	
+		<article id="Problem_article" id="inset_list_article"  style="padding-top:10px;  overflow: scroll;" class="active">
+			<div>
+				<div id="__mychart" style="float:left;left:10px;position:absolute;right:50px;border-left:1px solid #F0F0F0;box-sizing:border-box;"></div>
+				<div id="__ids" style="float:right;position:absolute;width:50px;right:0;"></div>
+				<div style="position:absolute;top: 310px;left:10px;right:10px;font-size:0.9em;">
+					<div style="margin-top:10px;border-left: 4px solid #368CE9;padding-left:3px;">描述： 
+						<span id="__id_tip">酒店产品查询服务器</span>
+					</div>
+					<div style="color:#A3A3A3;font-size:0.8em;margin-top:10px;">
+						System.ArgumentException 3.0
+						System.Net.WebException 62.0
+						System.Net.WebException 90.0
+						System.Web.HttpException 7.0
+					</div>
+					<div style="width:100%;">
+						<img style="width:100%;" src="./img/detail_baocuo.png"/>
+					</div>	
+					
+					
+				</div>
+			</div>
+			
+		</article>
+	</section>
+	<section id="add_module" class="" data-init="true" data-transition="slideUp">
+		<header>
+			<nav class="left">
+				<a href="#left_push_aside" data-icon="previous" data-target="menu" style="color:white;"><i class="icon previous"></i>Back</a>
+			</nav>
+			<h1 class="title">选择模块</h1>
+		</header>
+		<article class="active" data-scroll="true" id="module_article">
+			<ul class="list">
+				<li data-icon="checkbox-checked" data-href="App_section" data-icons="newspaper">
+					<span class="icon newspaper"></span>
+					<i class="icon checkbox-checked"></i>
+					App访问趋势
+				</li>
+				<li data-icon="checkbox-unchecked"  class="" data-href="Event_section" data-icons="bubble">
+					<span class="icon bubble"></span>
+					<i class="icon checkbox-unchecked"></i>业务大盘
+				</li>
+				<li data-icon="checkbox-checked" data-href="Problem_section"  data-icons="bell">
+					<span class="icon bell"></span>
+					<i class="icon checkbox-checked"></i>报错大盘
+				</li>
+				<li data-icon="checkbox-unchecked" data-href="Matraix_section"  data-icons="rocket">
+					<span class="icon rocket"></span>
+					<i class="icon checkbox-unchecked"></i>网络大盘
+				</li>
+			</ul>
+		</article>
+	</section>
+	<section id="form_section" data-init="true">
+		<header>
+			<nav class="left">
+				<a href="#" data-icon="previous" data-target="back"><i class="icon previous"></i>Back</a>
+			</nav>
+			<h1 class="title">高级搜索</h1>
+		</header>
+		<article data-scroll="true" id="form_article" class="active" data--jscroll-="_jscroll_10" style="overflow: hidden;">
+			<div class="indented" style="transition-property: transform; -webkit-transition-property: transform; transition-duration: 0ms; -webkit-transition-duration: 0ms; transform-origin: 0px 0px 0px; transform: translate(0px, 0px) scale(1) translateZ(0px);">
+				<!-- Input -->
+				<form>
+					<input type="date">
+					<input type="time">
+				</form>
+
+				<!-- Input group -->
+				<form class="input-group">
+					<input type="text" placeholder="命令字">
+					<input type="email" placeholder="返回码">
+					<input type="text" placeholder="网络类型">
+					<input type="text" placeholder="版本">
+					<input type="text" placeholder="连接类型">
+					<input type="text" placeholder="平台">
+					<input type="text" placeholder="地区">
+					<input type="text" placeholder="运营商">
+					<input type="text" placeholder="网络类型">
+					<div class="input-row">
+						<label>选择对比</label>
+						<div class="toggle active" data-on="是" data-off="否" name="sex"><input style="display: none;" name="sex" value="true"><div class="toggle-handle"></div></div>
+					</div>
+					
+				</form>
+
+				<form>
+					<a class="button block" data-icon="search" data-target="back" ><i class="icon search"></i>查询</a>
+				</form>
+			</div>
+		</article>
+	</section>
+	<section id="Problem_search_section" data-init="true">
+		<header>
+			<nav class="left">
+				<a href="#" data-icon="previous" data-target="back"><i class="icon previous"></i>Back</a>
+			</nav>
+			<h1 class="title">高级搜索</h1>
+		</header>
+		<article id="Problem_search_article" class="active" id="inset_list_article" data-scroll="true" style="padding-top:10px;">
+			<div style="margin-left:10px;margin-right:10px;">
+				<input type="date"/>
+			</div>
+			
+			<div style="line-height:40px;font-size:1em;margin-left:10px;margin-right:10px;height:50px;width:100%;">
+				<div style="float:left;">
+					<input type="text"  style="width:50px;text-align:center;"  value="14"/>
+				</div>			
+				<div style="float:left;margin-left:8px;">点</div>
+				
+				<div style="float:left;margin-left:8px;">
+					<input type="text"  style="width:50px;text-align:center;" value="35"/>
+				</div>
+				<div style="float:left;margin-left:8px;">分</div>
+			</div>
+			
+			<div style="margin-left:10px;margin-right:10px;margin-top:20px;">
+				<a    onclick="javascript:createProblem();" data-target="back" class="button" style="width:100%;background-color:#368CE9;height:40px;line-height:25px;">查看报表</a>
+			</div>	
+		</article>
+	</section>
+	<section id="empty_section" class=""  data-transition="slideUp">
+		<header>
+			<nav class="left">
+				<div class="alizarin" style=" width: 12px;height: 12px;position: absolute; right: 0px;top: 5px;border-radius: 6px;"></div>
+				<a href="#left_push_aside" data-target="menu" data-icon="list"><i class="icon list"></i></a>
+			</nav>
+			<h1 class="title"></h1>
+		</header>
+		
+		<article id="App_article" class="active">    
+	        <div class="chartTitle" id="chartTitle_sp">该模块在努力的开发中......</div>
+	        
+		</article>
+	</section>
+	
+</div>
+
+
+<audio controls="true"  loop="false" hidden="true"  id="myaudio" autoplay=false> 
+   <source src="./img/cat2.mp3" />
+</audio>
+<script>
+var myAuto = document.getElementById('myaudio');
+myAuto.pause();
+</script>
+
+
+
+
+
+<script type="text/javascript" src="js/zepto.js"></script>
+<script type="text/javascript" src="js/iscroll.js"></script>
+<script type="text/javascript" src="js/template.min.js"></script>
+<script type="text/javascript" src="js/Jingle.debug.js"></script>
+<script type="text/javascript" src="js/zepto.touch2mouse.js"></script>
+<script type="text/javascript" src="js/JChart.debug.js"></script>
+<script type="text/javascript" src="js/main.js"></script>
+</body>
+</html>

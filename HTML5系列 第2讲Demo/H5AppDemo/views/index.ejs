@@ -1,0 +1,14 @@
+<% include ./head%>
+<% include ./header%>
+
+<div class="lixianren">
+	<%for(var i in list){%>
+		<div class="fl lixianren_item" style="background-color:<%=list[i].color%>">
+			<div><%=list[i].partment%></div>
+			<div><%=list[i].type%></div>
+		</div>
+	<%}%>		
+</div>
+
+<% include ./footer%>
+<% include ./foot %>

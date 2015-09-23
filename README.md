@@ -19,6 +19,11 @@
 + [使用HTML5快速开发一款APP]()             
 **系列**：2015年9月23号携程内部培训HTML5系列教程         
 **简介**：本节课程将会介绍如何使用HTML5快速开发一款APP。课程内容涉及到前端开发流程、工程的构建、以及Node.js服务聚合。课程中的案例有：美途、豆瓣搜索简单应用等。        
+**Demo**： HTML5系列 第2讲Demo **见代码文件夹**
+**美途**：https://github.com/vczero/meitu     
+**cat demo**: http://vczero.github.io/catapp/index.html        
+**豆瓣OpenAPI搜索应用**：https://github.com/vczero/search         
+
 
 
 **下载**       

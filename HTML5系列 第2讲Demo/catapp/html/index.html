@@ -1,0 +1,148 @@
+<!DOCTYPE >
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>CAT V0.1</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+	<link rel="stylesheet" href="Jingle/dist/Jingle.min.1.css"/>
+	<script type="text/javascript" src="Jingle/libs/zepto.js"></script>
+	<script type="text/javascript" src="Jingle/libs/iscroll.js"></script>
+	<script type="text/javascript" src="Jingle/libs/template.min.js"></script>
+	<script type="text/javascript" src="Jingle/dist/Jingle.debug.js"></script>
+
+	<style>
+	.header-secondary .active{
+		border-bottom:4px solid #0093d5;
+	}
+	</style>
+</head>
+<body>
+<div id="aside_container"><!---侧边栏容器--->
+	<aside id="filter_aside" data-position="right" data-transition="push" style="-webkit-transform: translateX(0%);">
+		<div class="header">高级筛选</div>
+		<div class="center">
+			
+		</div>
+	</aside>
+</div>
+<div id="section_container"><!--页面容器--->
+	<section id="index_section" class="active">
+		<header>
+			<h1 class="title">CAT（Central Application Tracking）</h1>
+		</header>
+		<nav class="header-secondary" style="overflow: hidden;">
+			<div style="width: 640px; transition-property: transform; -webkit-transition-property: transform; transition-duration: 0ms; -webkit-transition-duration: 0ms; transform-origin: 0px 0px 0px; transform: translate(-28px, 0px) scale(1) translateZ(0px);" class="grid">
+				<a href="javascript:void(0);" class="one-part active" style="display: block;">App</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Event</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Problem</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Heartbeat</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Cross</a>
+				<a href="javascript:void(0);" class="one-part" style="display: block;">Cache</a>
+			</div>
+			<i id="btn_add_module" class="icon plus" style="position: absolute;right:0;top:0;opacity:.9;z-index:9999;background-color:#282c32;  margin: 0px;  width: 21px;"></i>
+		</nav>
+		<article id="App_article" class="active">
+			app_article
+		</article>
+		<article id="Event_article" class="indented">
+			event_article
+		</article>
+		<article id="No_article" class="indented">
+			No_article
+		</article>
+	</section>
+	<section id="add_module" data-init="true" >
+		<header>
+			<nav class="left">
+				<a href="#" data-icon="previous" data-target="back" style="color:white;"><i class="icon previous"></i>Back</a>
+			</nav>
+			<h1 class="title">选择模块</h1>
+		</header>
+		<article class="active" data-scroll="true" id="module_article">
+			<ul class="list">
+				<li data-icon="checkbox-unchecked"><i class="icon checkbox-unchecked"></i>Cache</li>
+				<li data-icon="checkbox-unchecked"><i class="icon checkbox-unchecked"></i>Database</li>
+				<li data-icon="checkbox-unchecked"><i class="icon checkbox-unchecked"></i>Matraix</li>
+				<li data-icon="checkbox-unchecked"><i class="icon checkbox-unchecked"></i>State</li>
+			</ul>
+		</article>
+	</section>
+	
+</div>
+<script>
+var App = (function(){
+    var pages = {};
+    var run = function(){
+        $.each(pages,function(k,v){
+            var sectionId = '#'+k+'_section';
+			$('body').delegate(sectionId,'pageinit',function(){
+                v.init && v.init.call(v);
+            });
+            $('body').delegate(sectionId,'pageshow',function(e,isBack){
+                //页面加载的时候都会执行
+                v.show && v.show.call(v);
+                //后退时不执行
+                if(!isBack && v.load){
+                    v.load.call(v);
+                }
+            });
+        });
+		Jingle.launch();
+	};
+    var page = function(id,factory){
+        return ((id && factory)?_addPage:_getPage).call(this,id,factory);
+    }
+    var _addPage = function(id,factory){
+        pages[id] = new factory();
+    };
+    var _getPage = function(id){
+        return pages[id];
+    }
+    //动态计算chart canvas的高度，宽度，以适配终端界面
+    var calcChartOffset = function(){
+        return {
+            height : $(document).height() - 44 - 30 -60,
+            width : $(document).width()
+        }
+
+    }
+    return {
+        run : run,
+        page : page,
+        calcChartOffset : calcChartOffset
+    }
+}());
+
+App.page('index',function(){
+    this.init = function(){
+        J.Scroll('#index_section nav.header-secondary',{
+            hScroll:true,
+            hScrollbar : false
+        }); 
+        $('#index_section nav.header-secondary a').on('tap',function(){
+			if(!$(this).hasClass("active")){
+				$(this).parent().find(".active").removeClass("active");
+				$(this).addClass("active");
+			}
+			
+           var text = $(this).text();
+		   var id = "#"+text+"_article";
+		   var noid = "#No_article";
+		   if($(id).length){
+				J.Router.showArticle(id,$(id));
+		   }else{
+				J.Router.showArticle(noid,$(noid));
+		   }
+		})
+		$('#index_section #btn_add_module').on('tap',function(){
+            J.Router.goTo('#add_module');
+        });
+        
+    }
+})
+App.run();
+</script>
+</body>
+</html>

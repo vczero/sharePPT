@@ -1,0 +1,64 @@
+<section id="appMonitor_section" >
+    <header style="background-color:#368CE9;">
+        <nav class="left">
+            <a href="#" data-icon="previous" data-target="back">回退</a>
+        </nav>
+        <h1 class="title">App趋势图</h1>
+    </header>
+
+    <article class="active">
+        <ul class="control-group" id="changeDragChartType" style="margin:10px 30px;">
+            <li class="active" data-type="request">请求数</li>
+            <li data-type="success">成功率</li>
+            <li data-type="delay">成功延时</li>
+        </ul>
+        <div class="chartTitle" id="chartTitle_sp">请求数（个/每分钟）</div>
+        <canvas id="chart_drag_line_canvas"></canvas>
+        <canvas id="chart_drag_bar_canvas" style="display: none;"></canvas>
+        <canvas id="chart_drag_delay_canvas" style="display: none;"></canvas>
+        <div class="legend">
+            <div data-icon="stop" style="color: #368CE9;">当前值</div>
+            <div data-icon="stop" style="color: #FFBB00;">对比值</div>
+        </div>
+        
+        <h1 class="chartTitle" style="text-align:left;font-size:0.85em;">当前值</h1>
+        <div class="item_list">
+        		<div class="item_listl_left">
+        			<span>成功率:</span> <span id="success_value_c" class="item_list_high">95.799%</span>
+        		</div>
+        		<div class="item_list_right">
+        			<span>总请求数:</span> <span id="success_request_c"  class="item_list_green">85,773</span>
+        		</div>
+        </div>
+        
+        <div class="item_list">
+        		<div class="item_listl_left">
+        			<span>总请求数(%):</span> <span id="success_requestA_c"  class="item_list_high">100.000%</span>
+        		</div>
+        		<div class="item_list_right">
+        			<span>成功平均延迟(ms):</span> <span id="success_delay_c"  class="item_list_green">13,240</span>
+        		</div>
+        </div>
+        
+        <h1 class="chartTitle"  style="text-align:left;font-size:0.85em;">对比值</h1>
+        <div class="item_list">
+        		<div class="item_listl_left">
+        			<span>成功率:</span> <span class="item_list_high" id="success_value_vs">95.799%</span>
+        		</div>
+        		<div class="item_list_right">
+        			<span>总请求数:</span> <span id="success_request_vs" class="item_list_green">85,773</span>
+        		</div>
+        </div>        
+        <div class="item_list">
+        		<div class="item_listl_left">
+        			<span>总请求数(%):</span> <span id="success_requestA_vs" class="item_list_high">100.000%</span>
+        		</div>
+        		<div class="item_list_right">
+        			<span>成功平均延迟(ms):</span> <span id="success_delay_vs" class="item_list_green">13,240</span>
+        		</div>
+        </div>
+         
+    </article>
+</section>
+
+

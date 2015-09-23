@@ -1,0 +1,76 @@
+/**** control group **/
+.control-group li{
+    border-color:#368CE9;
+}
+
+.control-group li.active {
+    background: #368CE9;
+    color:#fff;
+}
+
+.selected{
+    background-color: #E6E6E6 !important;
+    color: #fff;
+}
+
+.chartTitle{
+    text-align: center;
+    font-weight: 600;
+    font-size: 0.7em;
+    margin:10px;
+}
+
+
+.legend{
+    border: 1px solid #b9b4b6;
+    margin:0 auto;
+    width: 150px;
+    border-radius:4px;
+    padding:3px;
+    display: -webkit-box;
+}
+.legend>div{
+    -webkit-box-flex : 1;
+    box-flex : 1;
+    font-size: 0.7em;
+}
+
+.item_list{
+	font-size:0.8em;width:100%;height:25px;
+}
+
+.item_listl_left{
+	float:left;
+	margin-left:10px;
+}
+
+
+.item_list_high{
+	color:#A1A1A1;
+}
+
+.item_list_right{
+	float:right;
+	margin-right:10px;
+}
+
+
+.item_list_green{
+	color:#A1A1A1;
+}
+
+
+header{
+	background-color:#368CE9;
+}
+
+.one-part{
+	-webkit-box-flex: 1;
+	-moz-box-flex: 1;
+}
+
+
+
+
+
+

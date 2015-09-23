@@ -1,0 +1,22 @@
+<% include ./head%>
+<% include ./header%>
+
+<div style="margin-top:50px;">
+	<%for(var i in list){%>
+		<div style="width: 100%; height:50px;">
+			<div class="fl">
+				<div style="height:40px; background-color:#E03A2F;color:#FFF;font-size:16px;text-align:center;line-height: 40px;border-radius:5px;width:40px;margin-left:5px;">
+					<%=list[i].partment%>
+				</div>
+			</div>
+			<div class="fl" style="margin-left:4px; font-size:13px;">
+				<div><%=list[i].name%></div>
+				<div><%=list[i].tel%></div>
+				<div><%=list[i].email%></div>
+			</div>
+		</div>
+	<%}%>		
+</div>
+
+<% include ./footer%>
+<% include ./foot %>

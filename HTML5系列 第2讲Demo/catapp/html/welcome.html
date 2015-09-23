@@ -1,0 +1,163 @@
+
+<style type="text/css" id="css_jingle_welcome">
+    #welcome_robot{
+        width: 300px;height: 100%;margin:0 auto;margin-top: 80px;position: relative;
+    }
+    #welcome_robot>div{
+        position: absolute;
+        border: 5px solid #fff;
+        font-size: 20px;
+        font-weight: bold;
+        color: #fff;
+        border-radius: 40%;
+    }
+    #r_head{
+        left: 100px;top:0;
+        width: 100px;height: 100px;line-height: 100px;display: none;
+    }
+    #r_hand_left{
+        left: 10px;top:110px;
+        width: 40px;-webkit-transform:rotate(45deg);height: 120px;display: none;
+    }
+    #r_hand_right{
+        right: 10px;top:110px;
+        width: 40px;-webkit-transform:rotate(315deg);height: 120px;display: none;
+    }
+    #r_body{
+        left: 75px;top:110px;
+        width:150px;height: 150px;padding: 10px 5px;display: none;
+    }
+    #r_foot_left{
+        left: 75px;top:260px;-webkit-transform:rotate(30deg);
+        width: 40px;height: 120px;display: none;
+    }
+    #r_foot_right{
+        right: 95px;top:260px;
+        width:40px;height: 120px;display: none;
+    }
+    .w_box{
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 5px;
+        padding: 13px 8px;
+        margin:30px 40px;
+        background-color: #e4eefc;
+		text-align:left;
+    }
+	
+	/*welcome robots*/
+	@-webkit-keyframes r_head {
+		0% { opacity: 0; -webkit-transform: translateX(-100%) rotate(-120deg); }
+		100% { opacity: 1; -webkit-transform: translateX(0px) rotate(0deg); }
+	}
+	@-webkit-keyframes r_hand_l {
+		0% {-webkit-transform: translateX(-100%);}
+		100% {-webkit-transform: translateX(0) rotate(45deg);}
+	}
+	@-webkit-keyframes r_hand_r {
+		0% {-webkit-transform: translateX(100%);}
+		100% {-webkit-transform: translateX(0) rotate(315deg);}
+	}
+	@-webkit-keyframes r_body {
+		0% {-webkit-transform: scale(.1) rotate(0);}
+		10% {-webkit-transform: scale(.2) rotate(360deg);}
+		40% {-webkit-transform: scale(.5) rotate(0);}
+		50% {-webkit-transform: scale(.6) rotate(360deg);}
+		80% {-webkit-transform: scale(.9) rotate(0);}
+		100% {-webkit-transform: scale(1.1) rotate(360deg);}
+	}
+	@-webkit-keyframes r_foot_l {
+		 0% {-webkit-transform: translateX(250%) translateY(-300%) rotate(145deg);}
+		 100% {-webkit-transform: translateX(0) translateY(0) rotate(30deg);}
+	}
+	@-webkit-keyframes r_foot_r {
+		0% {-webkit-transform: translateX(-300%) translateY(300%) rotate(270deg);}
+		100% {-webkit-transform: translateX(0) translateY(0) rotate(0);}
+	}
+	@-webkit-keyframes  welcome_robot{
+		0%{-webkit-transform: scale(.8)}
+		20%{-webkit-transform: scale(1)}
+		40%{-webkit-transform: scale(.9)}
+		60%{-webkit-transform: scale(1)}
+		80%{-webkit-transform: scale(.8)}
+		100%{-webkit-transform: scale(1)}
+	}
+	@-webkit-keyframes  welcome_jinlge{
+		0%{-webkit-transform: scale(.6); border-color : #E74C3C;color:#E74C3C}
+		20%{-webkit-transform: scale(1); border-color : #E67E22;color:#E67E22}
+		40%{-webkit-transform: scale(.7); border-color : #9f00a7;color:#9f00a7}
+		60%{-webkit-transform: scale(1) ;border-color : #2980B9;color:#2980B9}
+		80%{-webkit-transform: scale(.8); border-color : #C0392B;color:#C0392B}
+		100%{-webkit-transform: scale(1) ;border-color : #fff;color:#fff}
+	}
+	@-webkit-keyframes shake {
+		0% {-webkit-transform:rotate(-5deg);}
+		100% {-webkit-transform:rotate(5deg);}
+	}
+	#welcome_btn{
+		position: absolute;bottom: 100px;right: 80px;
+		-webkit-animation-name: shake;
+		-webkit-animation-duration: 0.10s;
+		-webkit-animation-timing-function: linear;
+		-webkit-animation-direction: alternate;
+		-webkit-animation-iteration-count: infinite;
+	}
+	@-webkit-keyframes box_l {
+		0% { -webkit-transform: translateX(100%) skewX(-30deg); opacity: 0; }
+		60% { -webkit-transform: translateX(-20%) skewX(30deg); opacity: 1; }
+		80% { -webkit-transform: translateX(0%) skewX(-15deg); opacity: 1; }
+		100% { -webkit-transform: translateX(0%) skewX(0deg); opacity: 1; }
+	}
+	@-webkit-keyframes box_r {
+		0% { -webkit-transform: translateX(-100%) skewX(30deg); opacity: 0; }
+		60% { -webkit-transform: translateX(20%) skewX(-30deg); opacity: 1; }
+		80% { -webkit-transform: translateX(0%) skewX(15deg); opacity: 1; }
+		100% { -webkit-transform: translateX(0%) skewX(0deg); opacity: 1; }
+	}
+
+</style>
+<div id="jingle_welcome" class="slide">
+    <div class="slideWrapper" style="color: #fff;font-size: 1.5em;text-shadow: 1px 2px 1px rgba(0,0,0,0.5)">
+        <div style="text-align: center; height: 100%;background-color: rgb(97, 179, 81)">
+            <div id="welcome_jingle" style="height: 140px;width: 140px;border-radius: 50%;border: 8px solid #fff;font-size: 40px;font-weight:bold;line-height: 124px;margin: 40px auto">
+                CAT
+            </div>
+            <div style="margin-top: 100px;font-weight: 700;">Centralized Application Tracking</div>
+        </div>
+        <!--div style="text-align: center;height: 100%;background-color: #9B59B6;">
+            <div id="welcome_robot">
+                <div id="r_head">CAT</div>
+                <div id="r_hand_left">监控</div>
+                <div id="r_body" style="border-radius: 25%;">迅速利用框架产品的埋点</div>
+                <div id="r_hand_right">实时</div>
+                <div id="r_foot_left">轻量</div>
+                <div id="r_foot_right">全面</div>
+            </div>
+			<button id="welcome_btn" onclick="Jingle.Welcome.hide();">进入</button>
+        </div-->
+        <!--div style="text-align: center;height: 100%;background-color: #95A5A6">
+            <div id="w_box_1" class="w_box alizarin" style="margin-top: 80px;">CAT的独特之处</div>
+            <div id="w_box_2" class="w_box violet">实时不仅意味着快，也意味着准</div>
+            <div id="w_box_3" class="w_box peter-river">只要更新你的框架DLL，就能看到CAT统计</div>
+            <div id="w_box_4" class="w_box emerland">框架埋点经过反复review，不是海量日志</div>
+        </div>
+		
+
+
+        <div style="text-align: center;height: 100%;background-color: #E67E22;position:relative;">
+            <div style="margin-top: 100px;font-weight: 900;  text-align: left;padding-left: 20px;">
+				<h1>CAT网址</h1>
+				<h2>FWS:</h2>
+				<a>cat.fws.qa.nt.ctripcorp.com/cat/r/</a>
+				<h2>LPT:</h2>
+				<a>http://cat.lpt.qa.nt.ctripcorp.com/cat/r</a>
+				<h2>UAT:</h2>
+				<a>http://cat-uat/</a>
+				<h2>Prod:</h2>
+				<a>http://cat/</a>
+			
+			</div>
+			
+        </div-->
+    </div>
+</div>
