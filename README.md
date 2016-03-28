@@ -24,6 +24,7 @@
 **cat demo**: http://vczero.github.io/catapp/index.html        
 **豆瓣OpenAPI搜索应用**：https://github.com/vczero/search         
 
++ [电商平台移动前端框架构架](https://github.com/chenfengjw163/sharePPT/blob/master/%E7%94%B5%E5%95%86%E5%B9%B3%E5%8F%B0%E7%A7%BB%E5%8A%A8%E5%89%8D%E7%AB%AF%E6%A1%86%E6%9E%B6%E6%9E%84%E5%BB%BA.pdf)         
 
 
 **下载**       
